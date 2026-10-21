@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://saydencinasfedi-creator.github.io/better-deen-app/sitemap.xml
