@@ -346,3 +346,13 @@ details.menu summary span::after { position: absolute; top: 6px; }
 .two .phone { aspect-ratio: 390 / 660; }
 .two .phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
 @media (max-width: 560px) { .cta .btn { width: 100%; } }
+
+/* Game section and donation card */
+.modes { list-style: none; margin: 0 0 20px; padding: 0; display: grid; gap: 10px; }
+.modes li { background: var(--surface); border-radius: var(--radius-lg); padding: 14px 16px; display: grid; gap: 2px; }
+.modes b { color: var(--primary); }
+.modes span { color: var(--muted); font-size: .95rem; }
+.revives-title { margin: 8px 0 10px; font-size: 1.05rem; }
+#game .points { grid-template-columns: 1fr; }
+.donate { text-align: center; padding: 28px 24px; display: grid; gap: 12px; justify-items: center; }
+.donate p { margin: 0; max-width: 52ch; color: var(--muted); }
