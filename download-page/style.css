@@ -356,3 +356,6 @@ details.menu summary span::after { position: absolute; top: 6px; }
 #game .points { grid-template-columns: 1fr; }
 .donate { text-align: center; padding: 28px 24px; display: grid; gap: 12px; justify-items: center; }
 .donate p { margin: 0; max-width: 52ch; color: var(--muted); }
+
+/* The game screenshot is taller, so the whole screen shows */
+#game .phone { aspect-ratio: 390 / 900; }
