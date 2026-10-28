@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Better Deen Admin</title>
+  <link rel="stylesheet" href="admin.css">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon-192.png">
+  <meta name="theme-color" content="#0b1b17">
+</head>
+<body>
+  <main id="login" hidden>
+    <h1>Better Deen Admin</h1>
+    <form id="login-form">
+      <label>Email <input id="email" type="email" autocomplete="username" required></label>
+      <label>Password <input id="password" type="password" autocomplete="current-password" required></label>
+      <button type="submit">Sign in</button>
+      <p id="login-error" class="error" role="alert"></p>
+    </form>
+  </main>
+
+  <div id="app" hidden>
+    <header>
+      <strong>Better Deen Admin</strong>
+      <nav id="tabs">
+        <button data-tab="overview" class="active">Overview</button>
+        <button data-tab="profiles">Player reports</button>
+        <button data-tab="answers">Ask Deen reports</button>
+        <button data-tab="reports">App reports</button>
+        <button data-tab="avatars">Player pictures</button>
+        <button data-tab="reviews">Website reviews</button>
+        <button data-tab="terms">Banned words</button>
+        <button data-tab="rewards">Prizes</button>
+        <button data-tab="audit">Audit log</button>
+      </nav>
+      <button id="notify" class="ghost" hidden></button>
+      <button id="sign-out" class="ghost">Sign out</button>
+    </header>
+    <p id="status" class="error" role="alert"></p>
+    <section id="view"></section>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
 Sitemap: https://saydencinasfedi-creator.github.io/better-deen-app/sitemap.xml
