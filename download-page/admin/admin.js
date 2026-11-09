@@ -9,7 +9,7 @@ const sb = window.supabase.createClient(url, key, {
 
 const $ = (id) => document.getElementById(id);
 const view = $('view');
-const TABS = ['overview', 'profiles', 'answers', 'reports', 'avatars', 'reviews', 'terms', 'rewards', 'audit'];
+const TABS = ['overview', 'usage', 'profiles', 'answers', 'reports', 'avatars', 'reviews', 'terms', 'rewards', 'audit'];
 let tab = 'overview';
 let reviewStatus = 'pending';
 let reportStatus = 'open';
@@ -154,6 +154,95 @@ const views = {
       card('Ask Deen questions today', o.questions_today),
       card('Reviews on the website', o.approved_site_reviews),
       card('Banned words', o.banned_terms),
+    );
+  },
+
+  async usage() {
+    const [u, accounts] = await Promise.all([rpc('admin_usage'), rpc('admin_accounts', { p_limit: 300 })]);
+    const card = (label, value, note) =>
+      el('div', { class: 'card' }, el('b', {}, value), el('span', {}, label), note ? el('small', { class: 'muted' }, ' ' + note) : null);
+
+    // Active installs per day, the last 14 days.
+    const days = [];
+    for (let i = 13; i >= 0; i--) {
+      const d = new Date(Date.now() - i * 86400000).toISOString().slice(0, 10);
+      days.push({ day: d, n: Number((u.daily.find((x) => x.day === d) || {}).n || 0) });
+    }
+    const max = Math.max(1, ...days.map((d) => d.n));
+    const bars = el(
+      'div',
+      { class: 'bars', role: 'img', 'aria-label': 'Active installs per day, last 14 days' },
+      days.map((d) =>
+        el(
+          'div',
+          { class: 'bar', title: d.day + ': ' + d.n },
+          el('i', { style: 'height:' + Math.round((d.n / max) * 100) + '%' }),
+          el('small', {}, d.day.slice(8)),
+          el('em', {}, d.n),
+        ),
+      ),
+    );
+
+    const ranking = (title, rows, empty) => [
+      el('h3', {}, title),
+      table(
+        ['Name', 'Times', 'Installs'],
+        rows.map((r) => el('tr', {}, el('td', {}, r.name), el('td', {}, r.n), el('td', {}, r.installs))),
+        empty,
+      ),
+    ];
+
+    const emails = accounts.map((a) => a.email).join(String.fromCharCode(10));
+    const copy = el(
+      'button',
+      {
+        onclick: async (e) => {
+          try {
+            await navigator.clipboard.writeText(emails);
+            e.target.textContent = 'Copied';
+          } catch {
+            e.target.textContent = 'Could not copy';
+          }
+        },
+      },
+      'Copy the emails',
+    );
+
+    return el(
+      'div',
+      {},
+      el('p', { class: 'muted' }, 'Only counts people who said yes to anonymous statistics. An install is a random number made on the phone: it is not linked to an account, a name or a place.'),
+      el(
+        'div',
+        { class: 'cards' },
+        card('Installs (said yes)', u.installs_total),
+        card('New today', u.installs_today),
+        card('New, 7 days', u.installs_7d),
+        card('Inside the app now', u.active_now, 'last 5 min'),
+        card('Active today', u.active_today),
+        card('Active, 7 days', u.active_7d),
+        card('Active, 30 days', u.active_30d),
+        card('Accounts with an email', u.accounts_total),
+        card('New accounts, 7 days', u.accounts_7d),
+        card('Android', u.by_platform.android ?? 0, '30 days'),
+        card('iPhone', u.by_platform.ios ?? 0, '30 days'),
+      ),
+      el('h3', {}, 'Active installs per day'),
+      bars,
+      ranking('Screens, 7 days', u.top_screens, 'No screens counted yet.'),
+      ranking('Buttons, 7 days', u.top_taps, 'No taps counted yet. Only buttons with a fixed name are counted.'),
+      el('h3', {}, 'App versions, 30 days'),
+      table(
+        ['Version', 'Installs'],
+        u.by_version.map((v) => el('tr', {}, el('td', {}, v.version), el('td', {}, v.n))),
+        'Nothing yet.',
+      ),
+      el('div', { class: 'row' }, el('h3', {}, 'Accounts (' + accounts.length + ')'), el('span', { class: 'spacer' }), accounts.length ? copy : null),
+      table(
+        ['Email', 'Signed in with', 'Created', 'Last sign-in'],
+        accounts.map((a) => el('tr', {}, el('td', {}, a.email), el('td', {}, a.provider), el('td', {}, when(a.created_at)), el('td', {}, when(a.last_sign_in_at)))),
+        'No accounts yet.',
+      ),
     );
   },
 
