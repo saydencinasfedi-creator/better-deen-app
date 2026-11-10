@@ -34,6 +34,34 @@
     }).observe(hero);
   }
 
+  /* Theme: automatic (the system), light or dark; remembered in this
+     browser only. Works without it: the page then follows the system. */
+  var themeBtn = document.querySelector('.theme-toggle');
+  if (themeBtn) {
+    var order = ['auto', 'light', 'dark'];
+    var current = function () {
+      try { var m = localStorage.getItem('bd-theme'); if (m === 'light' || m === 'dark') return m; } catch (e) {}
+      return 'auto';
+    };
+    var apply = function (mode) {
+      if (mode === 'auto') root.removeAttribute('data-theme'); else root.setAttribute('data-theme', mode);
+      try { if (mode === 'auto') localStorage.removeItem('bd-theme'); else localStorage.setItem('bd-theme', mode); } catch (e) {}
+      var label = themeBtn.getAttribute('data-' + mode);
+      themeBtn.setAttribute('aria-label', label);
+      themeBtn.setAttribute('title', label);
+      var bg = { light: '#fbf8f1', dark: '#06151a' }[mode];
+      document.querySelectorAll('meta[name="theme-color"]').forEach(function (m) {
+        if (!m.dataset.content) { m.dataset.content = m.getAttribute('content'); m.dataset.media = m.getAttribute('media') || ''; }
+        if (bg) { m.removeAttribute('media'); m.setAttribute('content', bg); }
+        else { m.setAttribute('media', m.dataset.media); m.setAttribute('content', m.dataset.content); }
+      });
+    };
+    apply(current());
+    themeBtn.addEventListener('click', function () {
+      apply(order[(order.indexOf(current()) + 1) % order.length]);
+    });
+  }
+
   reviews();
 
   /* Reviews approved in the admin panel (site_reviews_public) and the form

@@ -30,7 +30,8 @@
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="preload" href="../fonts/IBMPlexSansArabic-Regular.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="../style.css?v=c630e8c3">
+<script>try{var m=localStorage.getItem("bd-theme");if(m==="light"||m==="dark")document.documentElement.dataset.theme=m}catch(e){}</script>
+<link rel="stylesheet" href="../style.css?v=068eb03d">
 </head>
 <body>
 <a class="skip" href="#main">انتقل إلى المحتوى</a>
@@ -40,13 +41,19 @@
     <nav aria-label="Better Deen">
       <a href="index.html">الرئيسية</a>
       <a href="index.html#pricing">السعر</a>
+      <a href="updates.html">المستجدات</a>
       <a href="download.html">التنزيل</a>
       <a href="support.html">المساعدة</a>
     </nav>
+    <button class="theme-toggle" type="button" data-auto="المظهر: تلقائي" data-light="المظهر: فاتح" data-dark="المظهر: داكن" aria-label="المظهر" title="المظهر">
+      <svg class="i-auto" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4v16"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg>
+      <svg class="i-light" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></svg>
+      <svg class="i-dark" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></svg>
+    </button>
     <a class="btn btn-primary btn-sm" href="download.html">حمّل التطبيق</a>
     <details class="menu">
       <summary aria-label="القائمة"><span></span></summary>
-      <div class="menu-list"><a href="index.html#features">المزايا</a><a href="index.html#pricing">السعر</a><a href="download.html">التنزيل</a><a href="support.html">المساعدة</a></div>
+      <div class="menu-list"><a href="index.html#features">المزايا</a><a href="index.html#pricing">السعر</a><a href="updates.html">المستجدات</a><a href="download.html">التنزيل</a><a href="support.html">المساعدة</a></div>
     </details>
     <details class="lang">
       <summary aria-label="اللغة">العربية</summary>
@@ -57,7 +64,7 @@
 <main id="main">
 <div class="page"><div class="wrap narrow">
 <h1>شروط الاستخدام</h1>
-<p class="updated">آخر تحديث: 6 أكتوبر 2026</p>
+<p class="updated">آخر تحديث: 10 نوفمبر 2026</p>
 
 <p>تسري هذه الشروط عند استخدامك Better Deen («التطبيق»). وباستخدامه فإنك تقبلها. وإن لم توافق عليها فلا تستخدم التطبيق من فضلك.</p>
 <h2>التطبيق</h2>
@@ -74,6 +81,12 @@
 <p>لا تستخدم التطبيق أو خدماته لمخالفة القانون، أو إيذاء الآخرين، أو محاولة الوصول إلى بيانات غيرك، أو إثقال خوادمنا أو التدخل فيها. ويجوز لنا إيقاف الحسابات التي تفعل ذلك.</p>
 <h2>محتواك ومحتوانا</h2>
 <p>بياناتك ملك لك؛ راجع <a href="privacy.html">سياسة الخصوصية</a>. وتصميم التطبيق وشيفرته والنصوص التي كتبناها ملك لـ Better Deen. أما نصوص القرآن وترجماته والتلاوات والأصوات والخطوط فهي لأصحابها، وتُستخدم وفق تراخيصها المذكورة في التطبيق.</p>
+<h2>العملات والأشكال والرموز</h2>
+<p>العملات والأشكال والأطر والألقاب وغيرها من عناصر الألعاب هي عناصر افتراضية للمتعة. ليس لها قيمة نقدية، ولا يمكن استبدالها بمال ولا نقلها، وهي لاستخدامك الشخصي داخل التطبيق فقط. تُكتسب العملات باللعب، ويمكنك أيضًا شراء بعضها بمال حقيقي عبر Google Play أو App Store. هذه المشتريات اختيارية، وتغيّر مظهر اللعبة أو توفر الوقت فقط، ولا تجعل أبدًا جولة تنافسية أو مصنّفة أسهل.</p>
+<p>المشتريات نهائية ما لم تنص قواعد الاسترداد في المتجر أو قانون بلدك على غير ذلك، ويُطلب الاسترداد من المتجر. إذا كنت دون السن التي يحق لك فيها الشراء في بلدك، فاطلب إذن أحد الوالدين أو الوصي أولًا. يعمل رمز الاستبدال مرة واحدة ولحساب واحد، ولا يجوز بيعه.</p>
+<p>قد نغيّر الأسعار ونعيد موازنة عدد العملات التي تمنحها الألعاب ونسحب العناصر أو نستبدلها للحفاظ على عدالة الألعاب، لكننا لن نسحب عنصرًا دفعت ثمنه دون استرداد.</p>
+<h2>بيانات اللعب</h2>
+<p>لتحسين جودة الألعاب نطلب إذنك لجمع بيانات لعب مجهولة (راجع سياسة الخصوصية، «بيانات اللعب والجودة»). يمكنك الرفض أو تغيير رأيك من الإعدادات، وتعمل الألعاب بالطريقة نفسها. قد يؤدي الغش أو العبث بالتطبيق أو إرسال نقاط كاذبة إلى لوحة ترتيب إلى حذف نقاطك واستبعاد ملفك من لوحات الترتيب والجوائز.</p>
 <h2>المسؤولية</h2>
 <p>يُقدَّم التطبيق كما هو. وبالقدر الذي يسمح به القانون، لا نتحمّل مسؤولية الأضرار غير المباشرة، كفوات صلاة بسبب عدم وصول إشعار. ولا يحدّ أي شيء في هذه الشروط من حقوقك بوصفك مستهلكًا وفق قانون بلدك.</p>
 <h2>التغييرات والتواصل</h2>
@@ -84,6 +97,7 @@
   <div class="wrap">
     <p>كن أفضل مسلم تستطيع أن تكونه، واجعل كونك مسلمًا أسهل.<br>بلا إعلانات. إحصاءات مجهولة يمكنك إيقافها. صلواتك تبقى على هاتفك.</p>
     <nav aria-label="Legal">
+      <a href="updates.html">المستجدات</a>
       <a href="privacy.html">الخصوصية</a>
       <a href="terms.html">الشروط</a>
       <a href="arena-rules.html">قواعد الساحة</a>

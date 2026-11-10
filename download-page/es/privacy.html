@@ -30,7 +30,8 @@
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="preload" href="../fonts/HankenGrotesk-Regular.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="../style.css?v=c630e8c3">
+<script>try{var m=localStorage.getItem("bd-theme");if(m==="light"||m==="dark")document.documentElement.dataset.theme=m}catch(e){}</script>
+<link rel="stylesheet" href="../style.css?v=068eb03d">
 </head>
 <body>
 <a class="skip" href="#main">Ir al contenido</a>
@@ -40,13 +41,19 @@
     <nav aria-label="Better Deen">
       <a href="index.html">Inicio</a>
       <a href="index.html#pricing">Precio</a>
+      <a href="updates.html">Novedades</a>
       <a href="download.html">Descargar</a>
       <a href="support.html">Ayuda</a>
     </nav>
+    <button class="theme-toggle" type="button" data-auto="Tema: automático" data-light="Tema: claro" data-dark="Tema: oscuro" aria-label="Tema" title="Tema">
+      <svg class="i-auto" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4v16"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg>
+      <svg class="i-light" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></svg>
+      <svg class="i-dark" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></svg>
+    </button>
     <a class="btn btn-primary btn-sm" href="download.html">Descargar</a>
     <details class="menu">
       <summary aria-label="Menú"><span></span></summary>
-      <div class="menu-list"><a href="index.html#features">Funciones</a><a href="index.html#pricing">Precio</a><a href="download.html">Descargar</a><a href="support.html">Ayuda</a></div>
+      <div class="menu-list"><a href="index.html#features">Funciones</a><a href="index.html#pricing">Precio</a><a href="updates.html">Novedades</a><a href="download.html">Descargar</a><a href="support.html">Ayuda</a></div>
     </details>
     <details class="lang">
       <summary aria-label="Idioma">Español</summary>
@@ -57,7 +64,7 @@
 <main id="main">
 <div class="page"><div class="wrap narrow">
 <h1>Política de privacidad</h1>
-<p class="updated">Última actualización: 9 de noviembre de 2026</p>
+<p class="updated">Última actualización: 10 de noviembre de 2026</p>
 
 <p>Better Deen («la app») la desarrolla un equipo independiente. Esta política explica qué datos usa la app, dónde se guardan y cómo puedes borrarlos. La app no tiene anuncios, no usa rastreadores publicitarios y no vende datos a nadie. Cuenta de forma anónima cómo se usa, y puedes desactivarlo cuando quieras en Ajustes (ver «Estadísticas de uso anónimas»).</p>
 <h2>Datos que se quedan en tu móvil</h2>
@@ -85,6 +92,13 @@
 <p>La app envía: un número aleatorio creado en tu móvil (no es tu nombre, tu cuenta, el identificador de tu móvil ni tu ubicación), si la app está abierta, qué pantallas se abren y qué botones con nombre fijo se pulsan. Nunca envía lo que escribes, tus oraciones o registros, tu diario, tus preguntas a Ask Deen, tu ubicación ni tus contactos.</p>
 <p>Lo usamos para saber cuánta gente usa la app y qué partes mejorar. Se conserva 60 días (la lista de instalaciones, con su primer y último día, plataforma y versión, se conserva mientras exista la app). Desactívalo en Ajustes y la app deja de enviar; pídenos en la dirección de abajo que borremos los datos de una instalación. Se guarda en servidores de Supabase en la Unión Europea.</p>
 <p>Aparte, si creas una cuenta, tenemos tu correo, como se explica en «Cuenta y copia en la nube». No se mezcla con estas estadísticas.</p>
+<h2>Datos de juego y calidad</h2>
+<p>Si lo permites, Salah Quest, DeenMat y los juegos de la Arena nos envían datos de juego anónimos para hacerlos más justos y mejores: hasta dónde llega una partida, las monedas y las puntuaciones, los niveles superados, qué skin llevas, qué packs de monedas o de skins se compran (el pago lo gestiona la propia tienda) y los errores técnicos. Van ligados a un número de instalación aleatorio, nunca a tu nombre, tus oraciones, tu diario, tu ubicación ni nada que escribas.</p>
+<p>Te lo preguntamos una vez, la primera vez que abres Salah Quest, y puedes cambiar la respuesta cuando quieras en Ajustes. Nuestra base legal es tu consentimiento. Los eventos de juego en bruto se borran a los 60 días; solo conservamos totales que no identifican a nadie. Los juegos funcionan igual si dices que sí o que no.</p>
+<p>Las puntuaciones que envías a un ranking (la Arena y los tableros de Salah Quest y DeenMat) son distintas: pertenecen a tu perfil público, como se explica en «La Arena».</p>
+<h2>Aspecto del perfil, códigos y objetos virtuales</h2>
+<p>El marco, el fondo, el título, la skin y la biografía corta que eliges se muestran a otros jugadores en tu perfil público. No pongas datos personales en la biografía: se bloquean los enlaces, los datos de contacto y las palabras ofensivas, y puedes ocultar tu perfil de los rankings.</p>
+<p>Los códigos de canje (como el que viene con la hoodie de Noor comprada en nuestra web) quedan vinculados a la cuenta que los usó, para que un código no se pueda usar dos veces. Las monedas y las skins se guardan en tu móvil junto con el resto de tu progreso en los juegos. Las compras de packs de monedas y de skins las gestionan Google Play o la App Store a través de RevenueCat, como se describe en «Suscripciones y pagos».</p>
 <h2>Contacto</h2>
 <p>Si nos escribes desde la app, el mensaje se envía con tu propia app de correo e incluye la información del dispositivo solo si lo eliges.</p>
 <h2>Borrar tus datos</h2>
@@ -99,6 +113,7 @@
   <div class="wrap">
     <p>Conviértete en el mejor musulmán que puedas ser, y haz que ser musulmán sea más fácil.<br>Sin anuncios. Estadísticas anónimas que puedes desactivar. Tus oraciones se quedan en tu móvil.</p>
     <nav aria-label="Legal">
+      <a href="updates.html">Novedades</a>
       <a href="privacy.html">Privacidad</a>
       <a href="terms.html">Términos</a>
       <a href="arena-rules.html">Reglas de la Arena</a>

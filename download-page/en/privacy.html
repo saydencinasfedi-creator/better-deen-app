@@ -30,7 +30,8 @@
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="preload" href="../fonts/HankenGrotesk-Regular.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="../style.css?v=c630e8c3">
+<script>try{var m=localStorage.getItem("bd-theme");if(m==="light"||m==="dark")document.documentElement.dataset.theme=m}catch(e){}</script>
+<link rel="stylesheet" href="../style.css?v=068eb03d">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -40,13 +41,19 @@
     <nav aria-label="Better Deen">
       <a href="index.html">Home</a>
       <a href="index.html#pricing">Pricing</a>
+      <a href="updates.html">Updates</a>
       <a href="download.html">Download</a>
       <a href="support.html">Support</a>
     </nav>
+    <button class="theme-toggle" type="button" data-auto="Theme: automatic" data-light="Theme: light" data-dark="Theme: dark" aria-label="Theme" title="Theme">
+      <svg class="i-auto" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4v16"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg>
+      <svg class="i-light" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></svg>
+      <svg class="i-dark" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></svg>
+    </button>
     <a class="btn btn-primary btn-sm" href="download.html">Get the app</a>
     <details class="menu">
       <summary aria-label="Menu"><span></span></summary>
-      <div class="menu-list"><a href="index.html#features">Features</a><a href="index.html#pricing">Pricing</a><a href="download.html">Download</a><a href="support.html">Support</a></div>
+      <div class="menu-list"><a href="index.html#features">Features</a><a href="index.html#pricing">Pricing</a><a href="updates.html">Updates</a><a href="download.html">Download</a><a href="support.html">Support</a></div>
     </details>
     <details class="lang">
       <summary aria-label="Language">English</summary>
@@ -57,7 +64,7 @@
 <main id="main">
 <div class="page"><div class="wrap narrow">
 <h1>Privacy policy</h1>
-<p class="updated">Last updated: 9 November 2026</p>
+<p class="updated">Last updated: 10 November 2026</p>
 
 <p>Better Deen (“the app”) is developed by an independent team. This policy explains what data the app uses, where it is stored and how you can delete it. The app has no ads and no ad trackers, and sells no data to anyone. It counts, anonymously, how it is used, and you can turn that off at any time in Settings (see “Anonymous usage statistics”).</p>
 <h2>Data that stays on your phone</h2>
@@ -85,6 +92,13 @@
 <p>The app sends: a random number made on your phone (it is not your name, your account, your phone’s ID or your location), whether the app is open, which screens are opened, and which buttons with a fixed name are tapped. It never sends what you write, your prayers or logs, your journal, your Ask Deen questions, your location or your contacts.</p>
 <p>We use it to know how many people use the app and which parts to improve. It is kept for 60 days (the list of installs, with their first and last day, platform and version, is kept as long as the app lives). Turn it off in Settings and the app stops sending; ask us at the address below to delete an install’s data. It is stored on Supabase servers in the European Union.</p>
 <p>Separately, if you create an account, we have your email, as explained in “Account and cloud copy”. It is not mixed with these statistics.</p>
+<h2>Game data and quality</h2>
+<p>If you allow it, Salah Quest, DeenMat and the Arena's games send us anonymous play data to make the games fairer and better: how far a run goes, the coins and scores, levels cleared, which skin is equipped, which coin or skin packs are bought (the store itself handles the payment) and technical errors. It is tied to a random installation number, never to your name, prayers, journal, location or anything you write.</p>
+<p>We ask once, the first time you open Salah Quest, and you can change your answer at any time in Settings. Our legal basis is your consent. Raw play events are deleted after 60 days; we keep only totals that identify no one. The games work the same whether you say yes or no.</p>
+<p>Scores you send to a ranking (the Arena, the Salah Quest and DeenMat boards) are different: they belong to your public profile, as explained in “The Arena”.</p>
+<h2>Profile look, codes and virtual items</h2>
+<p>The frame, background, title, skin and the short bio you choose are shown to other players on your public profile. Don't put personal details in your bio: links, contact details and offensive words are blocked, and you can hide your profile from the rankings.</p>
+<p>Redeem codes (such as the one that comes with the Noor hoodie bought on our website) are linked to the account that used them, so a code can't be used twice. Coins and skins are stored on your phone with the rest of your game progress. Purchases of coin and skin packs are handled by Google Play or the App Store through RevenueCat, as described in “Subscriptions and payments”.</p>
 <h2>Contact</h2>
 <p>If you write to us from the app, the message is sent with your own email app and includes device information only if you choose so.</p>
 <h2>Deleting your data</h2>
@@ -99,6 +113,7 @@
   <div class="wrap">
     <p>Become the best Muslim you can be, and make being Muslim easier.<br>No ads. Anonymous statistics you can turn off. Your prayers stay on your phone.</p>
     <nav aria-label="Legal">
+      <a href="updates.html">Updates</a>
       <a href="privacy.html">Privacy</a>
       <a href="terms.html">Terms</a>
       <a href="arena-rules.html">Arena rules</a>

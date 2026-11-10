@@ -30,7 +30,8 @@
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="preload" href="../fonts/HankenGrotesk-Regular.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="../style.css?v=c630e8c3">
+<script>try{var m=localStorage.getItem("bd-theme");if(m==="light"||m==="dark")document.documentElement.dataset.theme=m}catch(e){}</script>
+<link rel="stylesheet" href="../style.css?v=068eb03d">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MobileApplication", "name": "Better Deen", "operatingSystem": "Android", "applicationCategory": "LifestyleApplication", "description": "Horarios de oración y adhan, el Corán entero para leer y escuchar, Ask Deen, un cofre diario y un quiz del Corán. Sin anuncios. Estadísticas anónimas que puedes desactivar.", "inLanguage": "es", "image": "https://betterdeen.app/icon.png", "offers": {"@type": "Offer", "price": "2.99", "priceCurrency": "USD"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué método de cálculo usa?", "acceptedAnswer": {"@type": "Answer", "text": "El que elijas: Liga Mundial Musulmana, Umm al-Qura, ISNA, Egipto, Karachi, Ja'fari, Teherán y más, con el madhab del Asr y un ajuste manual de cada oración."}}, {"@type": "Question", "name": "¿Es gratis?", "acceptedAnswer": {"@type": "Answer", "text": "Tienes 7 días de prueba gratuita y después cuesta 2,99 $ al mes o 29,99 $ al año. Si de verdad no puedes pagarla, puedes jurarlo por Allah en la app y usar todo gratis durante un año."}}, {"@type": "Question", "name": "¿Ask Deen es un muftí?", "acceptedAnswer": {"@type": "Answer", "text": "No. Da conocimiento general con sus fuentes para que aprendas y lo compruebes. Para lo personal y los temas delicados, consulta a un sabio cualificado."}}, {"@type": "Question", "name": "¿Funciona sin conexión?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. Los horarios, la Qibla, el adhan, el texto del Corán, el tasbih y tu diario no necesitan conexión. Ask Deen, escuchar recitaciones y la Arena sí."}}, {"@type": "Question", "name": "¿En qué idiomas está?", "acceptedAnswer": {"@type": "Answer", "text": "Inglés, español, árabe y neerlandés, con el árabe completamente de derecha a izquierda."}}, {"@type": "Question", "name": "¿Sirve para suníes y chiíes?", "acceptedAnswer": {"@type": "Answer", "text": "Sí, en los horarios de oración (con los métodos Ja'fari y Teherán) y en la escuela que sigue Ask Deen. La biblioteca de hadices tiene por ahora solo colecciones suníes."}}, {"@type": "Question", "name": "¿Qué pasa con mis preguntas a Ask Deen?", "acceptedAnswer": {"@type": "Answer", "text": "Se envían a un proveedor de IA para responderlas, sin tu nombre ni datos de cuenta, y se guardan en tu historial en tu propio móvil. Los detalles están en la política de privacidad."}}, {"@type": "Question", "name": "¿Por qué no hay anuncios?", "acceptedAnswer": {"@type": "Answer", "text": "La suscripción paga la app, así que nunca tiene que vender tu atención ni tus datos."}}, {"@type": "Question", "name": "¿Cómo cancelo?", "acceptedAnswer": {"@type": "Answer", "text": "En tu cuenta de Google Play o de la App Store, en Suscripciones. La app tiene un acceso directo en Ajustes → Suscripción."}}, {"@type": "Question", "name": "¿Dónde está la app?", "acceptedAnswer": {"@type": "Answer", "text": "Llegará muy pronto a Google Play y a la App Store. Mientras tanto, en Android puedes instalarla desde la página de descarga."}}]}</script>
 </head>
@@ -42,13 +43,19 @@
     <nav aria-label="Better Deen">
       <a href="index.html" aria-current="page">Inicio</a>
       <a href="index.html#pricing">Precio</a>
+      <a href="updates.html">Novedades</a>
       <a href="download.html">Descargar</a>
       <a href="support.html">Ayuda</a>
     </nav>
+    <button class="theme-toggle" type="button" data-auto="Tema: automático" data-light="Tema: claro" data-dark="Tema: oscuro" aria-label="Tema" title="Tema">
+      <svg class="i-auto" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4v16"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg>
+      <svg class="i-light" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></svg>
+      <svg class="i-dark" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></svg>
+    </button>
     <a class="btn btn-primary btn-sm" href="download.html">Descargar</a>
     <details class="menu">
       <summary aria-label="Menú"><span></span></summary>
-      <div class="menu-list"><a href="index.html#features">Funciones</a><a href="index.html#pricing">Precio</a><a href="download.html">Descargar</a><a href="support.html">Ayuda</a></div>
+      <div class="menu-list"><a href="index.html#features">Funciones</a><a href="index.html#pricing">Precio</a><a href="updates.html">Novedades</a><a href="download.html">Descargar</a><a href="support.html">Ayuda</a></div>
     </details>
     <details class="lang">
       <summary aria-label="Idioma">Español</summary>
@@ -224,6 +231,32 @@
     </div>
   </div>
 </section>
+<section id="updates">
+  <div class="wrap narrow">
+    <h2>Últimas novedades</h2>
+    <div class="updates">
+<article class="update reveal">
+  <header>
+    <time datetime="2026-11-10">2026-11-10</time>
+    <span class="tag">Actualización</span>
+    <span class="ver">Versión 0.17.19</span>
+  </header>
+  <h3>Más skins, packs y un perfil a tu manera</h3>
+  <ul><li>11 skins nuevas de Salah Quest, de la Oasis esmeralda a la Estrella celestial de 100.000 monedas.</li><li>Packs de monedas (1, 10 y 100 horas de juego) y packs de skins en la tienda, con el precio completo en cada botón.</li><li>La hoodie de Noor que compras en esta web trae un código que desbloquea la skin de Noor.</li><li>Personaliza tu perfil público: marco, fondo, título, skin y una biografía corta.</li><li>Una pregunta nueva pide, una sola vez, permiso para que los juegos envíen datos de juego anónimos para mejorarlos. Puedes decir que no y cambiarlo en Ajustes.</li></ul>
+</article>
+<article class="update reveal">
+  <header>
+    <time datetime="2026-11-10">2026-11-10</time>
+    <span class="tag">Actualización</span>
+    <span class="ver">Versión 0.17.18</span>
+  </header>
+  <h3>Arreglos: arranque y toques de widget</h3>
+  <ul><li>La app ya no se queda en la pantalla verde de inicio cuando un paso del arranque tarda.</li><li>Los widgets y la barra de la próxima oración abren siempre la parte de Inicio que les corresponde.</li></ul>
+</article>
+    </div>
+    <p><a class="btn btn-secondary" href="updates.html">Todas las novedades</a></p>
+  </div>
+</section>
 <section id="privacy" class="band">
   <div class="wrap">
     <h2>Tu deen es privado</h2>
@@ -258,6 +291,7 @@
   <div class="wrap">
     <p>Conviértete en el mejor musulmán que puedas ser, y haz que ser musulmán sea más fácil.<br>Sin anuncios. Estadísticas anónimas que puedes desactivar. Tus oraciones se quedan en tu móvil.</p>
     <nav aria-label="Legal">
+      <a href="updates.html">Novedades</a>
       <a href="privacy.html">Privacidad</a>
       <a href="terms.html">Términos</a>
       <a href="arena-rules.html">Reglas de la Arena</a>
