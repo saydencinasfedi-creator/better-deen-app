@@ -158,7 +158,11 @@ const views = {
   },
 
   async usage() {
-    const [u, accounts] = await Promise.all([rpc('admin_usage'), rpc('admin_accounts', { p_limit: 300 })]);
+    const [u, accounts, g] = await Promise.all([
+      rpc('admin_usage'),
+      rpc('admin_accounts', { p_limit: 300 }),
+      rpc('admin_game_usage').catch(() => null),
+    ]);
     const card = (label, value, note) =>
       el('div', { class: 'card' }, el('b', {}, value), el('span', {}, label), note ? el('small', { class: 'muted' }, ' ' + note) : null);
 
@@ -191,6 +195,36 @@ const views = {
         empty,
       ),
     ];
+
+    // Game data (only from people who said yes to "Help improve the games"):
+    // events are named like quest.run:m500, so they are grouped by prefix.
+    const gameGroup = (title, prefix, empty, sortByNumber) => {
+      const rows = ((g && g.top) || [])
+        .filter((r) => r.name.startsWith(prefix))
+        .map((r) => ({ label: r.name.slice(prefix.length), n: Number(r.n), installs: Number(r.installs) }));
+      rows.sort(sortByNumber ? (a, b) => parseInt(a.label.replace(/\D/g, ''), 10) - parseInt(b.label.replace(/\D/g, ''), 10) : (a, b) => b.n - a.n);
+      const total = rows.reduce((t, r) => t + r.n, 0) || 1;
+      return [
+        el('h3', {}, title),
+        table(
+          ['Value', 'Times', 'Share', 'Installs'],
+          rows.map((r) => el('tr', {}, el('td', {}, r.label), el('td', {}, r.n), el('td', {}, Math.round((r.n / total) * 100) + '%'), el('td', {}, r.installs))),
+          empty,
+        ),
+      ];
+    };
+    const gameSection = g
+      ? [
+          el('h2', {}, 'Game data (last 30 days)'),
+          el('p', { class: 'muted' }, 'Only from people who said yes to "Help improve the games". Distances are rounded to 50 m and coins to 10. Nothing personal: a random install number and fixed names.'),
+          el('div', { class: 'cards' }, card('Installs sending game data', g.installs_30d)),
+          gameGroup('Run distance (m, where runs end)', 'quest.run:m', 'No runs yet.', true),
+          gameGroup('Coins per run', 'quest.coins:c', 'No runs yet.', true),
+          gameGroup('Mode', 'quest.mode:', 'No runs yet.'),
+          gameGroup('Skin flown', 'quest.skin:', 'No runs yet.'),
+          gameGroup('Packs bought', 'shop.buy:', 'No purchases yet.'),
+        ]
+      : [el('p', { class: 'muted' }, 'Game data is not available yet (the database update is missing).')];
 
     const emails = accounts.map((a) => a.email).join(String.fromCharCode(10));
     const copy = el(
@@ -231,6 +265,7 @@ const views = {
       bars,
       ranking('Screens, 7 days', u.top_screens, 'No screens counted yet.'),
       ranking('Buttons, 7 days', u.top_taps, 'No taps counted yet. Only buttons with a fixed name are counted.'),
+      ...gameSection,
       el('h3', {}, 'App versions, 30 days'),
       table(
         ['Version', 'Installs'],
