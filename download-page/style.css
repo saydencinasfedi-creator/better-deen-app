@@ -464,3 +464,7 @@ body { background: var(--sky), var(--bg); background-attachment: fixed, fixed, s
 .how li:hover, .tools li:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--primary-container) 50%, transparent); }
 
 #sky { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+
+/* Salah Quest is landscape: its clip sits wide, under the game text. */
+.game-clip { margin: 40px auto 0; max-width: 860px; border-radius: 18px; overflow: hidden; background: var(--surface); box-shadow: 0 30px 60px rgba(0,0,0,.4), 0 0 0 1px color-mix(in srgb, var(--outline) 50%, transparent); }
+.game-clip video { display: block; width: 100%; height: auto; }
