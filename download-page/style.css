@@ -468,3 +468,10 @@ body { background: var(--sky), var(--bg); background-attachment: fixed, fixed, s
 /* Salah Quest is landscape: its clip sits wide, under the game text. */
 .game-clip { margin: 40px auto 0; max-width: 860px; border-radius: 18px; overflow: hidden; background: var(--surface); box-shadow: 0 30px 60px rgba(0,0,0,.4), 0 0 0 1px color-mix(in srgb, var(--outline) 50%, transparent); }
 .game-clip video { display: block; width: 100%; height: auto; }
+
+/* Both plan buttons sit at the bottom of their cards, side by side. */
+.plan { display: flex; flex-direction: column; }
+.plan .btn { margin-top: auto; }
+.plan .name + .price, .plan .price + .btn { }
+.plan .price { margin-bottom: 16px; }
+.plan .note { margin-bottom: 16px; }
