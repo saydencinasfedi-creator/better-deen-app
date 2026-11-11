@@ -129,17 +129,19 @@ img { max-width: 100%; display: block; }
 h1 { font-size: clamp(2.1rem, 5vw, 3.4rem); line-height: 1.12; margin: 0 0 16px; color: var(--text); text-wrap: balance; }
 .hero p.lead { font-size: 1.15rem; color: var(--muted); margin: 0 0 28px; max-width: 34em; }
 .cta { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
-.hero-shots { position: relative; height: 600px; }
+.hero-shots { position: relative; height: 620px; }
 .phone { border-radius: 28px; overflow: hidden; background: var(--surface); box-shadow: 0 30px 60px rgba(0,0,0,.4), 0 0 0 1px color-mix(in srgb, var(--outline) 50%, transparent); }
 .hero-shots .phone { position: absolute; aspect-ratio: 390 / 700; }
 .hero-shots .phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
-.hero-shots .phone:nth-child(1) { width: min(310px, 64%); inset-inline-start: 0; top: 56px; z-index: 2; }
-.hero-shots .phone:nth-child(2) { width: min(270px, 56%); inset-inline-end: 0; top: 0; transform: rotate(5deg); }
-[dir="rtl"] .hero-shots .phone:nth-child(2) { transform: rotate(-5deg); }
+.hero-shots .phone:nth-child(1) { width: min(270px, 58%); inset-inline-start: 21%; top: 0; z-index: 3; }
+.hero-shots .phone:nth-child(2) { width: min(210px, 44%); inset-inline-start: -2%; top: 150px; z-index: 1; transform: rotate(-7deg); opacity: .92; }
+.hero-shots .phone:nth-child(3) { width: min(210px, 44%); inset-inline-end: -2%; top: 110px; z-index: 2; transform: rotate(7deg); opacity: .92; }
+[dir="rtl"] .hero-shots .phone:nth-child(2) { transform: rotate(7deg); }
+[dir="rtl"] .hero-shots .phone:nth-child(3) { transform: rotate(-7deg); }
 @media (max-width: 820px) {
   .hero .wrap { grid-template-columns: 1fr; }
   .hero { padding-top: 32px; }
-  .hero-shots { height: 520px; max-width: 460px; margin-inline: auto; width: 100%; }
+  .hero-shots { height: 560px; max-width: 460px; margin-inline: auto; width: 100%; }
 }
 
 /* Sections */
@@ -229,7 +231,6 @@ details.menu summary span::after { position: absolute; top: 6px; }
 @keyframes float { 0%,100% { translate: 0 0; } 50% { translate: 0 -8px; } }
 @media (prefers-reduced-motion: no-preference) {
   .hero-shots .phone:first-child { animation: float 7s ease-in-out infinite; }
-  .hero-shots .phone:nth-child(2) { animation: float 7s ease-in-out -3.5s infinite; }
 }
 
 /* Honest proof strip */
@@ -403,3 +404,63 @@ details.menu summary span::after { position: absolute; top: 6px; }
 .update h3 { margin: 8px 0 6px; font-size: 1.25rem; }
 .update ul { margin: 0; padding-inline-start: 1.2em; }
 .update li { margin: 4px 0; }
+
+/* ---------- v3: starry night, device frames, glass cards ---------- */
+:root {
+  --sky:
+    radial-gradient(70% 40% at 85% 0%, rgba(227, 184, 92, .10), transparent 70%),
+    radial-gradient(60% 35% at 5% 25%, rgba(96, 219, 182, .08), transparent 70%)
+  --glass: color-mix(in srgb, var(--surface) 62%, transparent);
+  --glass-line: color-mix(in srgb, var(--primary-container) 18%, transparent);
+  --accent-grad: linear-gradient(95deg, var(--primary) 0%, #ffa24d 45%, var(--secondary) 110%);
+}
+@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) { --sky: none; --glass: color-mix(in srgb, var(--surface) 85%, transparent); --glass-line: color-mix(in srgb, var(--outline) 70%, transparent); } }
+:root[data-theme="light"] { --sky: none; --glass: color-mix(in srgb, var(--surface) 85%, transparent); --glass-line: color-mix(in srgb, var(--outline) 70%, transparent); }
+body { background: var(--sky), var(--bg); background-attachment: fixed, fixed, scroll; }
+.accent { background: var(--accent-grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.band { background: color-mix(in srgb, var(--surface-low) 40%, transparent); border-block: 1px solid color-mix(in srgb, var(--outline) 30%, transparent); }
+.proof { background: transparent; }
+.hero { background: radial-gradient(55% 55% at 78% 30%, var(--glow), transparent 70%); }
+
+/* Glass cards */
+.how li, .tools li, .review, .plan, .card, .modes li, .update, details.qa {
+  background: var(--glass); border: 1px solid var(--glass-line);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+}
+.plan.best { background: linear-gradient(160deg, color-mix(in srgb, var(--primary-container) 18%, var(--glass)), var(--glass)); border-color: color-mix(in srgb, var(--primary-container) 60%, transparent); box-shadow: 0 20px 60px var(--glow); }
+.card.mercy { background: linear-gradient(160deg, color-mix(in srgb, var(--secondary) 12%, var(--glass)), var(--glass)); }
+.proof b { background: var(--accent-grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* Device frame: bezel, notch and a soft halo */
+.phone {
+  position: relative; border-radius: 40px; overflow: visible; background: #0a1418; padding: 7px;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, .45), 0 0 0 1px rgba(255, 255, 255, .12), inset 0 0 0 2px rgba(255, 255, 255, .06), 0 0 90px var(--glow);
+}
+.phone.video::before { content: ""; position: absolute; z-index: 2; top: 15px; left: 50%; width: 28%; height: 20px; margin-left: -14%; border-radius: 12px; background: #05090b; }
+.phone img, .phone video { width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 33px; display: block; }
+.hero-shots .phone { aspect-ratio: 390 / 844; }
+
+/* Feature rows: one big idea at a time, alternating sides */
+.rows { display: grid; gap: 96px; margin-top: 40px; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.row:nth-child(even) .row-media { order: 2; }
+.row-media { position: relative; }
+.row-media::before { content: ""; position: absolute; inset: 8% 6%; border-radius: 50%; background: radial-gradient(closest-side, var(--glow), transparent); filter: blur(30px); z-index: 0; }
+.row-media .phone { position: relative; z-index: 1; width: min(280px, 100%); margin-inline: auto; aspect-ratio: 390 / 760; }
+.row-n { display: inline-block; font-weight: 700; letter-spacing: .14em; font-size: .85rem; color: var(--secondary); margin-bottom: 10px; }
+.row-text h3 { font-size: clamp(1.7rem, 3.6vw, 2.5rem); line-height: 1.15; margin: 0 0 14px; background: var(--accent-grad); -webkit-background-clip: text; background-clip: text; color: transparent; text-wrap: balance; }
+.row-text p { margin: 0; color: var(--muted); font-size: 1.1rem; max-width: 30em; }
+@media (max-width: 820px) {
+  .rows { gap: 64px; }
+  .row { grid-template-columns: 1fr; gap: 28px; }
+  .row:nth-child(even) .row-media { order: 0; }
+  .row-text { text-align: center; }
+  .row-text p { margin-inline: auto; }
+}
+
+/* Centred section headings for rhythm */
+#features > .wrap > h2, #how > .wrap > h2, #tools .wrap > h2, #tools .section-sub, #pricing > .wrap > h2, #pricing > .wrap > .section-sub { text-align: center; margin-inline: auto; }
+.how li, .tools li { transition: transform .25s ease, border-color .25s ease; }
+.how li:hover, .tools li:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--primary-container) 50%, transparent); }
+
+#sky { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }

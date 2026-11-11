@@ -212,3 +212,70 @@
     });
   }
 })();
+
+/* Videos: do not autoplay when the visitor asks for reduced motion. */
+(function () {
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('video').forEach(function (v) { v.removeAttribute('autoplay'); v.pause(); });
+})();
+
+/* Night sky: a fixed canvas of slowly drifting, twinkling stars that stays
+   put while the page scrolls. Only in dark mode; still when motion is reduced. */
+(function () {
+  var cv = document.createElement('canvas');
+  cv.id = 'sky';
+  cv.setAttribute('aria-hidden', 'true');
+  document.body.insertBefore(cv, document.body.firstChild);
+  var ctx = cv.getContext('2d');
+  if (!ctx) return;
+  var root = document.documentElement;
+  var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var light = window.matchMedia('(prefers-color-scheme: light)');
+  var stars = [], w = 0, h = 0, dpr = 1;
+  function isLight() {
+    var m = root.dataset.theme;
+    return m === 'light' || (m !== 'dark' && light.matches);
+  }
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = window.innerWidth; h = window.innerHeight;
+    cv.width = w * dpr; cv.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var n = Math.round(Math.min(160, Math.max(50, w * h / 9000)));
+    stars = [];
+    for (var i = 0; i < n; i++) {
+      stars.push({ x: Math.random() * w, y: Math.random() * h, r: .5 + Math.random() * 1.3,
+        a: .25 + Math.random() * .6, p: Math.random() * 6.28, s: .6 + Math.random() * 1.6,
+        v: 2 + Math.random() * 5 });
+    }
+  }
+  var last = 0;
+  function draw(now) {
+    var dt = Math.min(.05, (now - last) / 1000 || 0); last = now;
+    ctx.clearRect(0, 0, w, h);
+    if (!isLight()) {
+      for (var i = 0; i < stars.length; i++) {
+        var s = stars[i];
+        if (!still) {
+          s.x += s.v * dt * .8; s.y -= s.v * dt * .35;
+          if (s.x > w + 4) s.x = -4;
+          if (s.y < -4) s.y = h + 4;
+        }
+        var tw = still ? 1 : .55 + .45 * Math.sin(now / 1000 * s.s + s.p);
+        ctx.globalAlpha = s.a * tw;
+        ctx.fillStyle = '#fff';
+        ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, 6.2832); ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+    }
+    if (!still) requestAnimationFrame(draw);
+  }
+  resize();
+  window.addEventListener('resize', function () { resize(); if (still) draw(0); });
+  if (still) {
+    draw(0);
+    new MutationObserver(function () { draw(0); }).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+  } else {
+    requestAnimationFrame(draw);
+  }
+})();
