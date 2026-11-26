@@ -611,7 +611,7 @@ const views = {
           'tr',
           {},
           el('td', {}, r.handle ?? r.user_id),
-          el('td', {}, r.kind === 'lifetime_free' ? 'Free for life' : "Noor's gift"),
+          el('td', {}, ({ quest_monthly: 'One year free (Salah Quest month)', quest_yearly: 'Annual grand prize (Salah Quest)', noor_giveaway: "Noor's gift" })[r.kind] ?? r.kind),
           el('td', {}, r.period),
           el('td', {}, r.status),
           el('td', {}, notes),
